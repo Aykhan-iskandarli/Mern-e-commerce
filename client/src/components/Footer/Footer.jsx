@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Page from "../Page/Page";
 import "./footer.css";
 import { BsFacebook } from "react-icons/bs";
@@ -9,11 +9,16 @@ import { FaInstagramSquare } from "react-icons/fa";
 import { AiOutlineMail } from "react-icons/ai";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import Aos from "aos" 
+import "aos/dist/aos.css"
 
 
 const Footer = () => {
+  useEffect(()=>{
+    Aos.init({duration:1000})
+  },[])
   return (
-    <div className="footer_section">
+    <div className="footer_section" data-aos="fade-up">
       <Page>
         <div className="footer">
           <ul className="footer-logo">

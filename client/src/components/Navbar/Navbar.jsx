@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./navbar.css";
 import { AiOutlineSearch } from "react-icons/ai";
 import { AiOutlineShoppingCart } from "react-icons/ai";
@@ -8,7 +8,8 @@ import MenuList from "./MenuList";
 import { useSelector, useDispatch } from "react-redux";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { signout } from "../../Redux/Reducers/userActions";
-
+import Aos from "aos" 
+import "aos/dist/aos.css"
 const Navbar = () => {
   const { userInfo } = useSelector((state) => state.userSignin);
 
@@ -19,8 +20,12 @@ const Navbar = () => {
   const signoutHandler = () => {
     dispatch(signout());
   };
+
+   useEffect(()=>{
+    Aos.init({duration:1000})
+  },[])
   return (
-    <header className="navbar_section">
+    <header className="navbar_section" data-aos="fade-down">
       <p className="overlay" onClick={() => setSearch(false)}></p>
       <Page>
         <nav className="navbar">

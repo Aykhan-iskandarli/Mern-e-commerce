@@ -8,7 +8,8 @@ import Page from "../Page/Page";
 import { Link } from "react-router-dom";
 import { listProducts } from "../../Redux/actions/productAction";
 import Loading from "../Loading/Loading";
-
+import Aos from "aos" 
+import "aos/dist/aos.css"
 
 
 
@@ -20,6 +21,7 @@ const productList = useSelector(state=>state.productList)
 const {loading,error,products} = productList
 
   useEffect(() => {
+    Aos.init({duration:1000})
     dispatch(listProducts())
   }, [dispatch])
 
@@ -36,7 +38,7 @@ const {loading,error,products} = productList
       
           <Page>
                 <h1>Products</h1>
-          <div className="row product">
+          <div className="row product" data-aos="zoom-in">
             {products.map((product) => (
               <div key={product._id} className="products">
                 <div className="products-img">

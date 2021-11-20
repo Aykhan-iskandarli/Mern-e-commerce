@@ -1,19 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, {  useEffect } from "react";
 import "./style/order.css";
 import {PayPalButton} from "react-paypal-button-v2"
 import { useDispatch, useSelector } from "react-redux";
 import Page from "../components/Page/Page";
 import { detailsOrder } from "../Redux/actions/orderAction";
 import Loading from "../components/Loading/Loading";
-import axios from "axios";
+// import axios from "axios";
 import Alert from "../components/Alert/Alert";
+import { motion } from "framer-motion"
+
 
 const OrderScreen = ({ history, match }) => {
   const orderId = match.params.id;
   const dispatch = useDispatch();
   const orderDetails = useSelector((state) => state.orderDetails);
 
-  const [sdkReady, setSdkReady] = useState(false);
+  // const [sdkReady, setSdkReady] = useState(false);
   console.log(orderDetails);
   const { order, loading, error } = orderDetails;
  
@@ -51,7 +53,10 @@ const OrderScreen = ({ history, match }) => {
   ) : error ? (
     <Alert className="alert-danger"> {error}</Alert>
   ) : (
-    <div className="order">
+    <motion.div
+    initial={{'opacity':0}}
+    animate={{'opacity':1}}
+    exit={{'opacity':0}} className="order">
       <Page>
         <div className="order-div">
           <div className="order-card">
@@ -140,7 +145,7 @@ const OrderScreen = ({ history, match }) => {
      
         </div>
       </Page>
-    </div>
+    </motion.div>
   );
 };
 

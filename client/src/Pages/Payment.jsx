@@ -5,7 +5,7 @@ import Page from "../components/Page/Page";
 import Input from "../components/Input/input";
 import { useDispatch } from "react-redux";
 import { savePaymentMethod } from "../Redux/actions/cartActions";
-
+import { motion } from "framer-motion"
 const Payment = ({history}) => {
     const [paymentMethod,setPaymentMethod] = useState("")
     const dispatch = useDispatch()
@@ -15,7 +15,10 @@ const Payment = ({history}) => {
         history.push("/placeorder")
     }
   return (
-    <div className="payment-section">
+    <motion.div
+    initial={{'opacity':0}}
+    animate={{'opacity':1}}
+    exit={{'opacity':0}} className="payment-section">
       <Page>
         <CheckoutSteps step1 step2 step3 />
 
@@ -56,7 +59,7 @@ const Payment = ({history}) => {
           </div>
         </form>
       </Page>
-    </div>
+    </motion.div>
   );
 };
 

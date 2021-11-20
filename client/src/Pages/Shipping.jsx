@@ -5,6 +5,8 @@ import Input from "../components/Input/input"
 import Page from '../components/Page/Page'
 import { useSelector,useDispatch} from 'react-redux'
 import { saveShippingAddress } from '../Redux/actions/cartActions'
+import { motion } from "framer-motion"
+
 
 const Shipping = ({history}) => {
 
@@ -27,7 +29,10 @@ const Shipping = ({history}) => {
         history.push("/payment")
     }
     return (
-        <div className="shipping-section">
+      <motion.div
+      initial={{'opacity':0}}
+      animate={{'opacity':1}}
+      exit={{'opacity':0}} className="shipping-section">
            
         <Page>
           <CheckoutSteps step1 step2 />
@@ -64,7 +69,7 @@ const Shipping = ({history}) => {
           </div>
           </div>
         </Page>
-      </div>
+      </motion.div>
     )
 }
 

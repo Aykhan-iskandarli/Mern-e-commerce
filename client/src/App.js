@@ -1,5 +1,6 @@
 import './App.css';
 import Home from './Pages/Home';
+import { AnimateSharedLayout } from "framer-motion/dist/es/index.js"
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom"
 import Contact from './Pages/Contact';
 import Login from './Pages/Login';
@@ -14,13 +15,16 @@ import Payment from './Pages/Payment';
 import PlaceOrder from './Pages/PlaceOrder';
 import OrderScreen from './Pages/OrderScreen';
 
+
 function App() {
   
   return (
     <>
     <Router>
+
       <Navbar/>
       <Switch>
+        <AnimateSharedLayout>
         <Route exact path="/" component={Home} />
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/product" component={ProductScreen} />
@@ -32,8 +36,10 @@ function App() {
         <Route exact path="/placeorder" component={PlaceOrder} />
         <Route exact path="/shipping" component={Shipping} />
         <Route exact path="/order/:id" component={OrderScreen} />
+        </AnimateSharedLayout>
       </Switch>
       <Footer/>
+    
     </Router>
     </>
   );

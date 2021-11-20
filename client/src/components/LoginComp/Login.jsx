@@ -52,8 +52,8 @@ const Login = ({ history, redirect }) => {
               <button className="btn register-btn">Submit</button>
             </div>
             <div className="already-account">
-              <p>Forgot Password?</p>
-              <Link to="/forgot">forgot password</Link>
+              <p>Create new account</p>
+              <Link to="/register">Register</Link>
             </div>
           </form>
         </div>

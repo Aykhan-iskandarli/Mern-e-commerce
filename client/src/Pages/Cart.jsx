@@ -6,6 +6,8 @@ import { addToCart, removeFromCart } from "../Redux/actions/cartActions";
 import Rating from "../components/Rating/Rating";
 import { TiDelete } from "react-icons/ti";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion"
+
 
 const Cart = ({ match, location,history }) => {
   const productId = match.params.id;
@@ -28,7 +30,10 @@ const Cart = ({ match, location,history }) => {
   }
   return (
     <>
-      <div className="cart_section">
+        <motion.div
+        initial={{'opacity':0}}
+        animate={{'opacity':1}}
+        exit={{'opacity':0}} className="cart_section">
         <Page className="cart-page">
           {cartItems.length === 0 ? (
             <div className="gotoshopping">
@@ -114,7 +119,7 @@ const Cart = ({ match, location,history }) => {
             </div>
           )}
         </Page>
-      </div>
+      </motion.div>
     </>
   );
 };

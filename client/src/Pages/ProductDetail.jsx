@@ -4,7 +4,7 @@ import Loading from "../components/Loading/Loading";
 import Page from "../components/Page/Page";
 import Rating from "../components/Rating/Rating";
 import { detailsProduct } from "../Redux/actions/productAction";
-
+import { motion } from "framer-motion"
 const ProductDetail = ({ match,history }) => {
     const [qty, setQty] = useState(1)
   const productId = match.params.id;
@@ -30,7 +30,10 @@ const ProductDetail = ({ match,history }) => {
       ) : error ? (
         <h1>{error}</h1>
       ) : (
-        <div className="product_details">
+        <motion.div
+        initial={{'opacity':0}}
+        animate={{'opacity':1}}
+        exit={{'opacity':0}} className="product_details">
           <h1>PRODUCT DETAILS</h1>
           <Page className="detail-page">
             <div className="product-detail">
@@ -77,7 +80,7 @@ const ProductDetail = ({ match,history }) => {
               </div>
             </div>
           </Page>
-        </div>
+        </motion.div>
       )}
     </>
   );

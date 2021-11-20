@@ -11,7 +11,7 @@ const app =express()
 
 //connect Database
 mongoose
-.connect("mongodb+srv://amazon:amazon@cluster0.377pn.mongodb.net/amazon?retryWrites=true&w=majority", {
+.connect(process.env.CONNECTION || "mongodb+srv://amazon:amazon@cluster0.377pn.mongodb.net/amazon?retryWrites=true&w=majority", {
     useNewUrlParser:true,
     useUnifiedTopology:true
 })
@@ -47,7 +47,7 @@ app.use((err,req,res,next)=>{
 })
 
 
-const PORT = process.env.PORT 
+const PORT = process.env.PORT || 5000
 
 app.listen(PORT,()=>{
     console.log(`Server is running PORT:${PORT}`)

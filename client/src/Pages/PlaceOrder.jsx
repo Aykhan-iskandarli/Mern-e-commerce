@@ -8,7 +8,7 @@ import Rating from '../components/Rating/Rating'
 import { createOrder } from '../Redux/actions/orderAction'
 import { ORDER_CREATE_RESET } from '../Redux/constants/orderConstant'
 import Alert from '../components/Alert/Alert'
-
+import { motion } from "framer-motion"
 
 const PlaceOrder = ({history}) => {
     const cart = useSelector(state=>state.cart)
@@ -37,7 +37,10 @@ const PlaceOrder = ({history}) => {
       dispatch(createOrder({...cart, orderItems:cart.cartItems}))
     }
     return (
-        <div className="order">
+      <motion.div
+      initial={{'opacity':0}}
+      animate={{'opacity':1}}
+      exit={{'opacity':0}} className="order">
             <Page >
                 <CheckoutSteps step1 step2 step3 step4/>
               <div className="order-div">
@@ -127,7 +130,7 @@ const PlaceOrder = ({history}) => {
               </div>
                
             </Page>
-        </div>
+        </motion.div>
     )
 }
 
